@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package todo.blunderlist.v1;
+
+option go_package = "blunderlist_todo_v1";
+option java_package = "com.blunderlist.todo.v1";
+option java_multiple_files = true;
+option java_outer_classname = "TodoProtos";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service Todo {
+  rpc ListTasks(TaskListRequest) returns (stream TaskResponse);
+  rpc GetTask(TaskQuery) returns (TaskResponse);
+  rpc CreateTask(TaskCreateRequest) returns (TaskResponse);
+  rpc UpdateTask(TaskUpdateRequest) returns (TaskResponse);
+  rpc DeleteTask(TaskQuery) returns (google.protobuf.Empty);
+}
+
+message TaskListRequest {
+}
+
+message TaskQuery {
+  uint64 id = 1;
+}
+
+message TaskCreateRequest {
+  string title = 1;
+  bool completed = 2;
+}
+
+message TaskUpdateRequest {
+  uint64 id = 1;
+  string title = 2;
+  bool completed = 3;
+}
+
+message TaskResponse {
+  uint64 id =  1;
+  string title = 2;
+  bool completed = 3;
+  google.protobuf.Timestamp create_time = 4;
+}

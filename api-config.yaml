@@ -1,0 +1,13 @@
+---
+type: "google.api.Service"
+config_version: 3
+name: "todo.blunderlist.endpoints.dev-servers-170213.cloud.goog"
+title: "Blunderlist Todo"
+documentation:
+  summary: "API backend for the Blunderlist Todo microservice"
+apis:
+- name: "todo.blunderlist.v1.Todo"
+usage:
+  rules:
+  - selector: "*"
+    allow_unregistered_calls: true
