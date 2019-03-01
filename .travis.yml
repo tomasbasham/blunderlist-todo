@@ -1,0 +1,19 @@
+---
+language: generic
+
+sudo: required
+dist: trusty
+
+services:
+- docker
+
+install:
+- docker build -t todo --target builder .
+
+script:
+- docker run --rm todo golint -set_exit_status ./...
+- docker run --rm todo go vet ./...
+- docker run --rm todo go test ./...
+
+notifications:
+  email: false
