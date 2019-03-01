@@ -1,4 +1,4 @@
-# blunderlist-todo [![Build Status](https://travis-ci.com/tomasbasham/blunderlist-todo.svg?branch=master)](https://travis-ci.com/tomasbasham/blunderlist-todo)
+# blunderlist-todo [![Build Status](https://travis-ci.com/tomasbasham/blunderlist-todo.svg?branch=master)](https://travis-ci.com/tomasbasham/blunderlist-todo) [![Maintainability](https://api.codeclimate.com/v1/badges/428e6cae5d8321a778ed/maintainability)](https://codeclimate.com/github/tomasbasham/blunderlist-todo/maintainability)
 
 A fictitious todo application through which to teach how to implement a
 microservice architecture. For the full list of services required to run this
