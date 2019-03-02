@@ -47,6 +47,41 @@ the `protoc` compiler has been made to make this far simpler.
 
 * `docker run --rm -v $(pwd):/usr/src/app tomasbasham/protoc:3.6.1-go -I ./proto --go_out=plugins=grpc:. todo.proto`
 
+## Creating a Client
+
+This repository includes generated protobuf files that may be used in consuming
+applications to establish a connection to this service. For convenience a
+client package is provided to perform any per-request setup in addition to
+initialising any gRPC dial options.
+
+```go
+import (
+    "context"
+    "fmt"
+
+    todopb "github.com/tomasbasham/blunderlist-todo/blunderlist_todo_v1"
+    "github.com/tomasbasham/blunderlist-todo/grpc"
+)
+
+func main() {
+    client, err := grpc.NewClientWithTarget(context.Background(), "1.2.3.4:50051")
+    if err != nil {
+        panic("unable to create client. terminating.")
+    }
+
+    query := &todopb.TaskQuery{
+        Id: 1,
+    }
+
+    task, err := client.GetTask(context.Background(), query)
+    if err != nil {
+        panic("unable to get task. terminating.")
+    }
+
+    fmt.Println(task)
+}
+```
+
 ## Further Reading / Useful Links
 
 * [Go](https://golang.org/)
